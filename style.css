@@ -16,8 +16,8 @@
     --bg-hover: #272724;
 
     --text-primary: #f0f0ec;
-    --text-secondary: #a5a5a0;
-    --text-muted: #777771;
+    --text-secondary: #f8f8f5;
+    --text-muted: #ffffff;
 
     --accent: #f3f4ec;
     --accent-hover: #c8ccb0;
@@ -166,7 +166,7 @@ section[id] {
 .section-index {
     margin-bottom: 16px;
     color: var(--accent);
-    font-size: 11px;
+    font-size: 15px;
     font-weight: 700;
     letter-spacing: 2px;
     line-height: 1.5;
@@ -723,7 +723,7 @@ section[id] {
     border: 1px solid var(--border);
     border-radius: var(--radius-small);
     color: var(--text-secondary);
-    font-size: 11px;
+    font-size: 13px;
     line-height: 1.5;
 }
 
@@ -1152,14 +1152,14 @@ section[id] {
 
 .contact-item-label {
     color: var(--text-muted);
-    font-size: 9px;
+    font-size: 13px;
     font-weight: 700;
     letter-spacing: 1px;
 }
 
 .contact-item-value {
     color: var(--text-primary);
-    font-size: 12px;
+    font-size: 14px;
     overflow-wrap: anywhere;
     transition: color var(--transition-fast);
 }
@@ -1198,7 +1198,7 @@ section[id] {
 }
 
 .footer-logo {
-    font-size: 16px;
+    font-size: 22px;
 }
 
 .footer-logo::first-letter {
