@@ -482,6 +482,8 @@ section[id] {
     transition: color var(--transition-fast);
 }
 
+
+
 .hero-socials a:hover,
 .footer-socials a:hover {
     color: var(--accent);
@@ -1223,8 +1225,11 @@ section[id] {
     gap: 14px;
 }
 
+
+
 .footer-socials a {
     font-size: 15px;
+    margin: 0 10px;
 }
 
 .back-to-top {
@@ -1945,6 +1950,8 @@ select,
     transform: translate(-50%, -50%);
     transition: width 0.2s ease, height 0.2s ease;
     display: none;
+    filter: drop-shadow(0 0 12px rgba(255, 255, 255, 0.65));
+    transition: filter 0.2s ease;
 }
 
 @media (pointer: fine) {
@@ -2029,13 +2036,12 @@ select,
     display: inline-flex;
     align-items: center;
     gap: 8px;
-    padding: 9px 12px;
+    padding: 5px 7px;
     background: #202020;
     color: #fff;
     border: 1px solid #444;
-    border-radius: 24px;
     font: inherit;
-    font-size: 0.9rem;
+    font-size:10px;
     cursor: pointer;
     transition: background 0.2s ease, border-color 0.2s ease;
 }
@@ -2051,7 +2057,7 @@ select,
 }
 
 #musicIcon {
-    font-size: 1.1rem;
+    font-size:13px;
 }
 
 @media (max-width: 850px) {
@@ -2822,3 +2828,18 @@ select,
         transition: none;
     }
 }
+
+/* Icon  */
+
+
+
+.fa-x-twitter, 
+.fa-envelope,
+.fa-linkedin,
+.fa-github,
+.fa-phone,
+.fa-code,
+.fa-angles-up {
+  font-size: 23px;
+}
+

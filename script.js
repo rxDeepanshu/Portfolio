@@ -428,7 +428,7 @@ window.addEventListener("load", () => {
     if (preloader) {
         setTimeout(() => {
             preloader.classList.add("loaded");
-        }, 2000);
+        }, 0);
     }
 });
 
