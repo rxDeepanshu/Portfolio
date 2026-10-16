@@ -262,7 +262,7 @@ section[id] {
     align-items: center;
     min-height: 44px;
     color: var(--text-secondary);
-    font-size: 12px;
+    font-size: 13px;
     font-weight: 500;
     transition: color var(--transition-fast);
 }
@@ -1913,5 +1913,60 @@ section[id] {
 
     a {
         text-decoration: none;
+    }
+}
+
+/* Custom White Circular Cursor */
+body {
+    cursor: none;
+}
+
+a,
+button,
+input,
+textarea,
+select,
+[role="button"] {
+    cursor: none;
+}
+
+.custom-cursor {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 8px;
+    height: 8px;
+    background-color: #050505;
+    border: 2px solid rgb(243, 242, 245);
+    padding: 7px;
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 99999;
+    transform: translate(-50%, -50%);
+    transition: width 0.2s ease, height 0.2s ease;
+    display: none;
+}
+
+@media (pointer: fine) {
+    .custom-cursor {
+        display: block;
+    }
+}
+
+.custom-cursor.hover {
+    width: 12px;
+    height: 12px;
+}
+
+
+@media (min-width: 1024px) {
+    .hero {
+        padding-top: 2rem;
+    }
+}
+
+@media (min-width: 851px) {
+    .nav-menu a {
+        font-size: 0.9rem;
     }
 }

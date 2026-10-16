@@ -388,3 +388,34 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
 });
+
+
+// Custom Cursor
+
+const cursor = document.querySelector(".custom-cursor");
+
+if (cursor && window.matchMedia("(pointer: fine)").matches) {
+    document.addEventListener("mousemove", (event) => {
+        cursor.style.display = "block";
+        cursor.style.left = `${event.clientX}px`;
+        cursor.style.top = `${event.clientY}px`;
+    });
+
+    document.addEventListener("mouseleave", () => {
+        cursor.style.display = "none";
+    });
+
+    document.addEventListener("mouseenter", () => {
+        cursor.style.display = "block";
+    });
+
+    document.querySelectorAll("a, button").forEach((element) => {
+        element.addEventListener("mouseenter", () => {
+            cursor.classList.add("hover");
+        });
+
+        element.addEventListener("mouseleave", () => {
+            cursor.classList.remove("hover");
+        });
+    });
+}
