@@ -419,3 +419,420 @@ if (cursor && window.matchMedia("(pointer: fine)").matches) {
         });
     });
 }
+
+
+// Website Preloader
+window.addEventListener("load", () => {
+    const preloader = document.getElementById("preloader");
+
+    if (preloader) {
+        setTimeout(() => {
+            preloader.classList.add("loaded");
+        }, 2000);
+    }
+});
+
+// Music
+
+
+const music = document.getElementById("backgroundMusic");
+const musicToggle = document.getElementById("musicToggle");
+const musicIcon = document.getElementById("musicIcon");
+const musicLabel = musicToggle?.querySelector(".music-label");
+
+if (music && musicToggle && musicIcon && musicLabel) {
+    music.volume = 0.25;
+
+    function updateMusicButton(isPlaying) {
+        musicIcon.textContent = isPlaying ? "🔊" : "🔇";
+        musicLabel.textContent = isPlaying ? "Music On" : "Music Off";
+        musicToggle.setAttribute(
+            "aria-label",
+            isPlaying ? "Mute background music" : "Turn background music on"
+        );
+        musicToggle.setAttribute("aria-pressed", String(isPlaying));
+        musicToggle.title = isPlaying
+            ? "Mute background music"
+            : "Turn background music on";
+    }
+
+    // Attempt autoplay; browsers may block it.
+    music.play()
+        .then(() => updateMusicButton(true))
+        .catch(() => updateMusicButton(false));
+
+    musicToggle.addEventListener("click", async () => {
+        if (!music.paused) {
+            music.pause();
+            updateMusicButton(false);
+            return;
+        }
+
+        try {
+            await music.play();
+            updateMusicButton(true);
+        } catch (error) {
+            updateMusicButton(false);
+            console.warn("Music playback could not start.", error);
+        }
+    });
+
+    music.addEventListener("play", () => updateMusicButton(true));
+    music.addEventListener("pause", () => updateMusicButton(false));
+}
+
+
+
+/* =========================================
+   GITHUB PROFILE AND REPOSITORIES
+========================================= */
+
+document.addEventListener("DOMContentLoaded", () => {
+    const GITHUB_USERNAME = "rxDeepanshu";
+
+    const profileUrl =
+        `https://api.github.com/users/${GITHUB_USERNAME}`;
+
+    const repositoriesUrl =
+        `https://api.github.com/users/${GITHUB_USERNAME}/repos?sort=updated&per_page=100&type=owner`;
+
+    const avatar = document.getElementById("githubAvatar");
+    const name = document.getElementById("githubName");
+    const bio = document.getElementById("githubBio");
+
+    const repoCount = document.getElementById("githubRepos");
+    const followers = document.getElementById("githubFollowers");
+    const stars = document.getElementById("githubStars");
+
+    const repositoryGrid =
+        document.getElementById("githubRepositoryGrid");
+
+    const status = document.getElementById("githubStatus");
+
+    if (!repositoryGrid) return;
+
+    async function fetchGitHubData() {
+        try {
+            const [profileResponse, repositoriesResponse] =
+                await Promise.all([
+                    fetch(profileUrl),
+                    fetch(repositoriesUrl)
+                ]);
+
+            if (!profileResponse.ok || !repositoriesResponse.ok) {
+                throw new Error(
+                    "GitHub API request failed. Please try again later."
+                );
+            }
+
+            const profile = await profileResponse.json();
+            const repositories = await repositoriesResponse.json();
+
+            // Update profile information.
+            if (avatar && profile.avatar_url) {
+                avatar.src = profile.avatar_url;
+            }
+
+            if (name) {
+                name.textContent = profile.name || profile.login;
+            }
+
+            if (bio) {
+                bio.textContent =
+                    profile.bio || "Software developer exploring and building with code.";
+            }
+
+            if (repoCount) {
+                repoCount.textContent = profile.public_repos;
+            }
+
+            if (followers) {
+                followers.textContent = profile.followers;
+            }
+
+            // Calculate stars across public repositories owned by the user.
+            const totalStars = repositories.reduce(
+                (total, repository) =>
+                    total + repository.stargazers_count,
+                0
+            );
+
+            if (stars) {
+                stars.textContent = totalStars;
+            }
+
+            // Sort by stars first, then most recently updated.
+            const selectedRepositories = [...repositories]
+                .sort((a, b) => {
+                    if (b.stargazers_count !== a.stargazers_count) {
+                        return b.stargazers_count - a.stargazers_count;
+                    }
+
+                    return new Date(b.updated_at) -
+                        new Date(a.updated_at);
+                })
+                .slice(0, 6);
+
+            renderRepositories(selectedRepositories);
+
+            if (status) {
+                status.textContent =
+                    `Showing ${selectedRepositories.length} public repositories.`;
+            }
+
+        } catch (error) {
+            console.error("GitHub data error:", error);
+
+            repositoryGrid.innerHTML = `
+                <p class="github-status">
+                    GitHub data is temporarily unavailable.
+                    You can still explore my projects on
+                    <a
+                        href="https://github.com/${GITHUB_USERNAME}"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >my GitHub profile</a>.
+                </p>
+            `;
+
+            if (status) {
+                status.textContent =
+                    "Could not load live GitHub data.";
+            }
+        }
+    }
+
+    function renderRepositories(repositories) {
+        if (!repositories.length) {
+            repositoryGrid.innerHTML = `
+                <p class="github-status">
+                    No public repositories were found.
+                </p>
+            `;
+            return;
+        }
+
+        repositoryGrid.innerHTML = repositories.map(repository => {
+            const description = escapeHTML(
+                repository.description || "No description provided yet."
+            );
+
+            const repositoryName = escapeHTML(repository.name);
+
+            const language = escapeHTML(
+                repository.language || "Other"
+            );
+
+            const repositoryUrl = repository.html_url;
+
+            return `
+                <article class="github-repository-card">
+
+                    <div class="github-repository-title">
+                        <span
+                            class="github-repository-icon"
+                            aria-hidden="true"
+                        >◇</span>
+
+                        <a
+                            href="${repositoryUrl}"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                        >${repositoryName}</a>
+                    </div>
+
+                    <p class="github-repository-description">
+                        ${description}
+                    </p>
+
+                    <div class="github-repository-meta">
+
+                        <span class="github-language">
+                            <span
+                                class="github-language-dot"
+                                aria-hidden="true"
+                            ></span>
+                            ${language}
+                        </span>
+
+                        <span>
+                            ★ ${repository.stargazers_count}
+                        </span>
+
+                        <span>
+                            Forks: ${repository.forks_count}
+                        </span>
+
+                    </div>
+
+                </article>
+            `;
+        }).join("");
+    }
+
+    // Escape API-provided text before inserting it into HTML.
+    function escapeHTML(value) {
+        return String(value).replace(/[&<>"']/g, character => ({
+            "&": "&amp;",
+            "<": "&lt;",
+            ">": "&gt;",
+            '"': "&quot;",
+            "'": "&#39;"
+        })[character]);
+    }
+
+    fetchGitHubData();
+});
+
+
+/* ========================================
+   LEETCODE LIVE STATISTICS
+======================================== */
+
+document.addEventListener("DOMContentLoaded", () => {
+    const username = "deepanshu__yadav";
+
+    const API_BASE = "https://leetcode-stats.tashif.codes";
+
+    const statusElement = document.getElementById("lc-status");
+
+    // Exit safely if the LeetCode section is not on the page.
+    if (!statusElement) return;
+
+    async function fetchStats(endpoint) {
+        const response = await fetch(
+            `${API_BASE}/${encodeURIComponent(username)}${endpoint}`,
+            { signal: AbortSignal.timeout(15000) }
+        );
+
+        if (!response.ok) {
+            throw new Error(`Statistics request failed: ${response.status}`);
+        }
+
+        const result = await response.json();
+
+        if (result.status === "error" || !result.data) {
+            throw new Error(result.message || "Statistics unavailable.");
+        }
+
+        return result.data;
+    }
+
+    function setText(id, value) {
+        const element = document.getElementById(id);
+
+        if (element) {
+            element.textContent = value;
+        }
+    }
+
+    function setProgress(barId, solved, total) {
+        const bar = document.getElementById(barId);
+
+        if (!bar) return;
+
+        const solvedCount = Number(solved) || 0;
+        const totalCount = Number(total) || 0;
+
+        const percentage = totalCount > 0
+            ? Math.min(100, (solvedCount / totalCount) * 100)
+            : 0;
+
+        bar.style.width = `${percentage}%`;
+    }
+
+    function formatNumber(value) {
+        const number = Number(value);
+
+        return Number.isFinite(number) && number > 0
+            ? number.toLocaleString("en-US")
+            : "N/A";
+    }
+
+    async function loadLeetCodeStats() {
+        try {
+            statusElement.textContent =
+                "Fetching your latest LeetCode statistics...";
+
+            // Fetch solved counts and ranking.
+            const [summary, stats] = await Promise.all([
+                fetchStats(""),
+                fetchStats("/stats")
+            ]);
+
+            const difficulty = stats.byDifficulty || {};
+
+            const easy = Number(difficulty.easy) || 0;
+            const medium = Number(difficulty.medium) || 0;
+            const hard = Number(difficulty.hard) || 0;
+
+            const total = Number(stats.totalSolved ?? summary.totalSolved)
+                || easy + medium + hard;
+
+            setText("lc-total", total.toLocaleString("en-US"));
+
+            setText("lc-easy", easy.toLocaleString("en-US"));
+            setText("lc-medium", medium.toLocaleString("en-US"));
+            setText("lc-hard", hard.toLocaleString("en-US"));
+
+            setText(
+                "lc-easy-total",
+                `${easy.toLocaleString("en-US")} solved`
+            );
+
+            setText(
+                "lc-medium-total",
+                `${medium.toLocaleString("en-US")} solved`
+            );
+
+            setText(
+                "lc-hard-total",
+                `${hard.toLocaleString("en-US")} solved`
+            );
+
+            setProgress("lc-easy-bar", easy, stats.totalQuestions);
+            setProgress("lc-medium-bar", medium, stats.totalQuestions);
+            setProgress("lc-hard-bar", hard, stats.totalQuestions);
+
+            // Ranking and acceptance rate.
+            setText(
+                "lc-ranking",
+                formatNumber(summary.ranking ?? summary.globalRanking)
+            );
+
+            const acceptance = Number(stats.acceptanceRate);
+
+            setText(
+                "lc-acceptance",
+                Number.isFinite(acceptance)
+                    ? `${acceptance.toFixed(1)}%`
+                    : "N/A"
+            );
+
+            // Contest rating is optional; fetch separately.
+            try {
+                const contest = await fetchStats("/contests");
+
+                setText(
+                    "lc-rating",
+                    formatNumber(contest.rating ?? contest.currentRating)
+                );
+            } catch {
+                setText("lc-rating", "N/A");
+            }
+
+            statusElement.textContent =
+                "Statistics loaded from a public third-party API. " +
+                "Values may be delayed or temporarily unavailable.";
+
+        } catch (error) {
+            console.error("LeetCode API error:", error);
+
+            statusElement.textContent =
+                "Unable to load live statistics right now. " +
+                "You can still view the full profile using the link above.";
+        }
+    }
+
+    loadLeetCodeStats();
+});

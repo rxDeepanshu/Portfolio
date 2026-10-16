@@ -13,18 +13,18 @@
     --bg-primary: #121212;
     --bg-secondary: #191919;
     --bg-card: #202020;
-    --bg-hover: #272724;
+    --bg-hover: #292929;
 
     --text-primary: #f0f0ec;
     --text-secondary: #f8f8f5;
     --text-muted: #ffffff;
 
-    --accent: #f3f4ec;
-    --accent-hover: #c8ccb0;
-    --accent-dark: #333628;
+    --accent: #fffffd;
+    --accent-hover: #c1c2be;
+    --accent-dark: #3e3e3d;
 
     --border: #333333;
-    --border-light: #41413b;
+    --border-light: #3c3c3c;
 
     --font-main: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI",
                  Roboto, Helvetica, Arial, sans-serif;
@@ -1968,5 +1968,857 @@ select,
 @media (min-width: 851px) {
     .nav-menu a {
         font-size: 0.9rem;
+    }
+}
+
+
+/* Loading Screen */
+#preloader {
+    position: fixed;
+    inset: 0;
+    background: #111111;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 18px;
+    z-index: 999999;
+    transition: opacity 0.6s ease, visibility 0.6s ease;
+}
+
+#preloader p {
+    color: #d4d4d4;
+    font-size: 0.9rem;
+    letter-spacing: 2px;
+}
+
+.loader {
+    width: 42px;
+    height: 42px;
+    border: 3px solid #383838;
+    border-top-color: #ffffff;
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+}
+
+#preloader.loaded {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .loader {
+        animation-duration: 2s;
+    }
+
+    #preloader {
+        transition-duration: 0.01ms;
+    }
+}
+
+/* Music */
+
+.music-toggle {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 9px 12px;
+    background: #202020;
+    color: #fff;
+    border: 1px solid #444;
+    border-radius: 24px;
+    font: inherit;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: background 0.2s ease, border-color 0.2s ease;
+}
+
+.music-toggle:hover {
+    background: #303030;
+    border-color: #888;
+}
+
+.music-toggle:focus-visible {
+    outline: 2px solid #fff;
+    outline-offset: 3px;
+}
+
+#musicIcon {
+    font-size: 1.1rem;
+}
+
+@media (max-width: 850px) {
+    .music-toggle {
+        margin: 12px 0;
+    }
+}
+
+
+/* =========================================
+   GITHUB ACTIVITY SECTION
+========================================= */
+
+.github-section {
+    padding: 100px 0;
+    background: #111111;
+    color: #eeeeee;
+}
+
+.github-section .container {
+    width: min(1120px, 90%);
+    margin: 0 auto;
+}
+
+.github-section .section-heading {
+    margin-bottom: 42px;
+}
+
+.github-section .section-number {
+    display: inline-block;
+    color: #8c9a7c;
+    font-size: 0.78rem;
+    letter-spacing: 2px;
+    margin-bottom: 14px;
+}
+
+.github-section .section-heading h2 {
+    font-size: clamp(2rem, 4vw, 3rem);
+    margin: 0 0 12px;
+}
+
+.github-section .section-heading > p {
+    color: #a1a1aa;
+    line-height: 1.7;
+}
+
+/* Profile Card */
+
+.github-profile-card,
+.github-panel,
+.github-repositories-section {
+    background: #191919;
+    border: 1px solid #303030;
+    border-radius: 18px;
+}
+
+.github-profile-card {
+    padding: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 28px;
+    flex-wrap: wrap;
+    margin-bottom: 24px;
+}
+
+.github-profile-info {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    flex: 1 1 300px;
+    min-width: 0;
+}
+
+.github-avatar {
+    width: 76px;
+    height: 76px;
+    border-radius: 50%;
+    border: 2px solid #3a3a3a;
+    object-fit: cover;
+    background: #252525;
+}
+
+.github-profile-info h3 {
+    margin: 0 0 6px;
+    font-size: 1.25rem;
+}
+
+.github-username {
+    color: #8c9a7c;
+    text-decoration: none;
+    font-size: 0.92rem;
+}
+
+.github-username:hover {
+    color: #b5c7a1;
+}
+
+.github-profile-info p {
+    color: #a1a1aa;
+    margin: 10px 0 0;
+    font-size: 0.9rem;
+    line-height: 1.6;
+}
+
+/* Statistics */
+
+.github-stats {
+    display: flex;
+    gap: 28px;
+    flex-wrap: wrap;
+}
+
+.github-stat {
+    text-align: center;
+    min-width: 70px;
+}
+
+.github-stat span {
+    display: block;
+    color: #ffffff;
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+.github-stat p {
+    color: #999999;
+    font-size: 0.78rem;
+    margin: 6px 0 0;
+}
+
+.github-profile-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 11px 16px;
+    background: #252525;
+    color: #eeeeee;
+    border: 1px solid #414141;
+    border-radius: 9px;
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: background 0.2s ease, border-color 0.2s ease;
+}
+
+.github-profile-button:hover {
+    background: #303030;
+    border-color: #8c9a7c;
+}
+
+/* Contribution Panel */
+
+.github-panel {
+    padding: 28px;
+    margin-bottom: 24px;
+    min-width: 0;
+}
+
+.github-panel-heading {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 18px;
+    flex-wrap: wrap;
+    margin-bottom: 25px;
+}
+
+.github-panel-heading h3 {
+    font-size: 1.25rem;
+    margin: 0 0 8px;
+}
+
+.github-panel-heading p {
+    color: #999999;
+    font-size: 0.9rem;
+    line-height: 1.6;
+    margin: 0;
+}
+
+.github-live-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: #b5c7a1;
+    font-size: 0.8rem;
+    border: 1px solid #344332;
+    border-radius: 30px;
+    padding: 7px 11px;
+    white-space: nowrap;
+}
+
+.github-live-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: #3fb950;
+}
+
+.github-graph-wrapper {
+    width: 100%;
+    overflow-x: auto;
+    padding: 10px 0;
+    scrollbar-width: thin;
+    scrollbar-color: #454545 #191919;
+}
+
+.github-graph-wrapper img {
+    display: block;
+    width: 100%;
+    min-width: 650px;
+    height: auto;
+    border-radius: 5px;
+}
+
+.github-legend {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 5px;
+    color: #999999;
+    font-size: 0.75rem;
+    margin-top: 15px;
+}
+
+.legend-box {
+    width: 11px;
+    height: 11px;
+    border-radius: 2px;
+}
+
+.legend-box.level-0 {
+    background: #252525;
+}
+
+.legend-box.level-1 {
+    background: #0e4429;
+}
+
+.legend-box.level-2 {
+    background: #006d32;
+}
+
+.legend-box.level-3 {
+    background: #26a641;
+}
+
+.legend-box.level-4 {
+    background: #39d353;
+}
+
+.github-chart-note {
+    color: #777777;
+    font-size: 0.78rem;
+    line-height: 1.6;
+    margin: 16px 0 0;
+}
+
+/* Repository Section */
+
+.github-repositories-section {
+    padding: 28px;
+}
+
+.github-text-link {
+    color: #b5c7a1;
+    text-decoration: none;
+    font-size: 0.9rem;
+}
+
+.github-text-link:hover {
+    color: #ffffff;
+}
+
+.github-repository-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
+}
+
+.github-repository-card {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    padding: 22px;
+    border: 1px solid #333333;
+    background: #202020;
+    border-radius: 12px;
+    transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+.github-repository-card:hover {
+    transform: translateY(-3px);
+    border-color: #66785b;
+}
+
+.github-repository-title {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    margin-bottom: 12px;
+}
+
+.github-repository-icon {
+    color: #a8b79b;
+    font-size: 1.1rem;
+}
+
+.github-repository-title a {
+    color: #eeeeee;
+    font-weight: 600;
+    text-decoration: none;
+    overflow-wrap: anywhere;
+}
+
+.github-repository-title a:hover {
+    color: #b5c7a1;
+}
+
+.github-repository-description {
+    color: #a1a1aa;
+    font-size: 0.9rem;
+    line-height: 1.7;
+    margin: 0 0 20px;
+    overflow-wrap: anywhere;
+    flex: 1;
+}
+
+.github-repository-meta {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    flex-wrap: wrap;
+    color: #aaaaaa;
+    font-size: 0.8rem;
+    margin-top: auto;
+}
+
+.github-language {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+}
+
+.github-language-dot {
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    background: #8c9a7c;
+}
+
+.github-loading-card {
+    grid-column: 1 / -1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    min-height: 110px;
+    color: #aaaaaa;
+}
+
+.github-loading-spinner {
+    width: 20px;
+    height: 20px;
+    border: 2px solid #444444;
+    border-top-color: #b5c7a1;
+    border-radius: 50%;
+    animation: githubSpin 0.8s linear infinite;
+}
+
+@keyframes githubSpin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.github-status {
+    color: #999999;
+    font-size: 0.85rem;
+    line-height: 1.6;
+    margin: 18px 0 0;
+}
+
+/* Responsive */
+
+@media (max-width: 850px) {
+    .github-section {
+        padding: 75px 0;
+    }
+
+    .github-profile-card {
+        align-items: flex-start;
+    }
+
+    .github-stats {
+        width: 100%;
+        justify-content: flex-start;
+        gap: 25px;
+    }
+
+    .github-profile-button {
+        width: 100%;
+    }
+}
+
+@media (max-width: 600px) {
+    .github-profile-card,
+    .github-panel,
+    .github-repositories-section {
+        padding: 20px;
+        border-radius: 14px;
+    }
+
+    .github-profile-info {
+        align-items: flex-start;
+        gap: 13px;
+    }
+
+    .github-avatar {
+        width: 58px;
+        height: 58px;
+    }
+
+    .github-profile-info h3 {
+        font-size: 1.05rem;
+    }
+
+    .github-profile-info p {
+        font-size: 0.82rem;
+    }
+
+    .github-stats {
+        justify-content: space-between;
+        gap: 12px;
+    }
+
+    .github-stat {
+        min-width: 0;
+    }
+
+    .github-stat span {
+        font-size: 1.3rem;
+    }
+
+    .github-repository-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .github-panel-heading {
+        align-items: flex-start;
+    }
+
+    .github-graph-wrapper img {
+        min-width: 650px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .github-loading-spinner {
+        animation: none;
+    }
+
+    .github-repository-card {
+        transition: none;
+    }
+}
+
+
+/* ========================================
+   LEETCODE DASHBOARD
+======================================== */
+
+.leetcode-section {
+    padding: 100px 0;
+    background: #121212;
+    color: #ededed;
+}
+
+.leetcode-section .container {
+    width: min(1000px, 90%);
+    margin: 0 auto;
+}
+
+.leetcode-heading {
+    margin-bottom: 35px;
+}
+
+.leetcode-heading .section-label {
+    color: #a3a58c;
+    font-size: 0.75rem;
+    letter-spacing: 2.5px;
+    font-weight: 600;
+}
+
+.leetcode-heading h2 {
+    font-size: clamp(2rem, 4vw, 3rem);
+    margin: 15px 0;
+    font-weight: 700;
+}
+
+.leetcode-heading h2 span {
+    color: #a3a58c;
+}
+
+.leetcode-heading p {
+    color: #999;
+    line-height: 1.7;
+}
+
+.leetcode-card {
+    padding: 35px;
+    border-radius: 18px;
+    background: #191919;
+    border: 1px solid #303030;
+}
+
+/* Profile header */
+
+.leetcode-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.leetcode-identity {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.leetcode-icon {
+    width: 52px;
+    height: 52px;
+    display: grid;
+    place-items: center;
+    border-radius: 14px;
+    background: #292a24;
+    border: 1px solid #444638;
+    color: #d4d5bd;
+    font-weight: 800;
+    letter-spacing: 1px;
+}
+
+.leetcode-identity h3 {
+    margin: 0 0 7px;
+    font-size: 1.05rem;
+}
+
+.leetcode-identity p {
+    margin: 0;
+    color: #999;
+    font-size: 0.9rem;
+}
+
+.leetcode-profile-link {
+    color: #d5d6c3;
+    text-decoration: none;
+    border: 1px solid #444638;
+    padding: 11px 16px;
+    border-radius: 9px;
+    font-size: 0.85rem;
+    transition: background 0.25s, border-color 0.25s;
+}
+
+.leetcode-profile-link:hover {
+    background: #292a24;
+    border-color: #a3a58c;
+}
+
+/* Total solved */
+
+.leetcode-main-stat {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    padding: 38px 0;
+    margin: 28px 0;
+    border-top: 1px solid #303030;
+    border-bottom: 1px solid #303030;
+}
+
+.stat-number {
+    font-size: clamp(3rem, 8vw, 4.5rem);
+    line-height: 1;
+    font-weight: 750;
+    letter-spacing: -2px;
+}
+
+.stat-caption {
+    color: #999;
+    font-size: 0.9rem;
+}
+
+/* Difficulty cards */
+
+.leetcode-difficulty-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 16px;
+}
+
+.difficulty-card {
+    padding: 22px;
+    background: #202020;
+    border: 1px solid #303030;
+    border-radius: 13px;
+}
+
+.difficulty-title {
+    font-size: 0.85rem;
+    font-weight: 600;
+}
+
+.difficulty-card h3 {
+    font-size: 1.9rem;
+    margin: 13px 0 15px;
+}
+
+.easy-card .difficulty-title {
+    color: #57c785;
+}
+
+.medium-card .difficulty-title {
+    color: #e5b85c;
+}
+
+.hard-card .difficulty-title {
+    color: #ed7777;
+}
+
+.difficulty-track {
+    height: 6px;
+    width: 100%;
+    border-radius: 20px;
+    background: #383838;
+    overflow: hidden;
+}
+
+.difficulty-fill {
+    height: 100%;
+    width: 0;
+    border-radius: inherit;
+    transition: width 0.8s ease;
+}
+
+.easy-card .difficulty-fill {
+    background: #57c785;
+}
+
+.medium-card .difficulty-fill {
+    background: #e5b85c;
+}
+
+.hard-card .difficulty-fill {
+    background: #ed7777;
+}
+
+.difficulty-card small {
+    display: block;
+    margin-top: 12px;
+    color: #969696;
+    font-size: 0.75rem;
+}
+
+/* Extra statistics */
+
+.leetcode-extra-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 16px;
+    margin-top: 20px;
+}
+
+.leetcode-extra-card {
+    padding: 22px;
+    border-radius: 13px;
+    background: #202020;
+    border: 1px solid #303030;
+}
+
+.extra-label {
+    color: #999;
+    font-size: 0.8rem;
+}
+
+.leetcode-extra-card h3 {
+    font-size: 1.45rem;
+    margin: 12px 0 0;
+    overflow-wrap: anywhere;
+}
+
+/* Status and CTA */
+
+.leetcode-status {
+    margin: 24px 0 18px;
+    color: #999;
+    font-size: 0.8rem;
+    line-height: 1.6;
+}
+
+.leetcode-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    color: #d5d6c3;
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 600;
+    transition: color 0.25s;
+}
+
+.leetcode-cta:hover {
+    color: #fff;
+}
+
+.leetcode-cta span {
+    transition: transform 0.25s;
+}
+
+.leetcode-cta:hover span {
+    transform: translate(3px, -3px);
+}
+
+/* Responsive */
+
+@media (max-width: 700px) {
+    .leetcode-section {
+        padding: 70px 0;
+    }
+
+    .leetcode-card {
+        padding: 22px;
+    }
+
+    .leetcode-difficulty-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .leetcode-extra-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .difficulty-card {
+        padding: 20px;
+    }
+}
+
+@media (max-width: 400px) {
+    .leetcode-header {
+        align-items: flex-start;
+    }
+
+    .leetcode-profile-link {
+        width: 100%;
+        text-align: center;
+    }
+
+    .leetcode-card {
+        padding: 16px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .difficulty-fill,
+    .leetcode-cta span {
+        transition: none;
     }
 }
