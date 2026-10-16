@@ -19,7 +19,7 @@
     --text-secondary: #a5a5a0;
     --text-muted: #777771;
 
-    --accent: #b5b99a;
+    --accent: #f3f4ec;
     --accent-hover: #c8ccb0;
     --accent-dark: #333628;
 
@@ -234,7 +234,7 @@ section[id] {
     align-items: center;
     gap: 5px;
     flex-shrink: 0;
-    font-size: 20px;
+    font-size: 23px;
     font-weight: 650;
     letter-spacing: -0.8px;
 }
@@ -1198,7 +1198,7 @@ section[id] {
 }
 
 .footer-logo {
-    font-size: 14px;
+    font-size: 16px;
 }
 
 .footer-logo::first-letter {
@@ -1207,7 +1207,7 @@ section[id] {
 
 .footer-copyright {
     color: var(--text-muted);
-    font-size: 10px;
+    font-size: 14px;
     text-align: center;
 }
 
@@ -1224,7 +1224,7 @@ section[id] {
 }
 
 .footer-socials a {
-    font-size: 10px;
+    font-size: 15px;
 }
 
 .back-to-top {
@@ -1242,8 +1242,13 @@ section[id] {
 }
 
 .back-to-top span {
-    font-size: 14px;
+    font-size: 34px;
+    border: 2px solid ;
+    width:40px;
+    text-align: center;
+    border-radius:7px;
 }
+
 
 
 /* ==================== 19. TABLETS ==================== */
