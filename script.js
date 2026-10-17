@@ -428,7 +428,7 @@ window.addEventListener("load", () => {
     if (preloader) {
         setTimeout(() => {
             preloader.classList.add("loaded");
-        }, 0);
+        },600);
     }
 });
 
@@ -785,4 +785,19 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     loadLeetCodeStats();
+});
+
+
+
+const revealObserver = new IntersectionObserver((entries) => {
+  entries.forEach((entry) => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add("is-visible");
+      revealObserver.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.12 });
+
+document.querySelectorAll("[data-reveal]").forEach((element) => {
+  revealObserver.observe(element);
 });

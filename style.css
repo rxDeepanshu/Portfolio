@@ -2807,3 +2807,76 @@ select,
   font-size: 23px;
 }
 
+/* ===== ANIMATION 1: STAGGERED HERO ENTRANCE ===== */
+
+@keyframes heroFadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(28px);
+    filter: blur(5px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
+}
+
+.hero .hero-content > *,
+.hero .hero-visual {
+  opacity: 0;
+  animation: heroFadeUp 1.2s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+/* Sequential entrance */
+.hero .hero-content > *:nth-child(1) { animation-delay: 0.1s; }
+.hero .hero-content > *:nth-child(2) { animation-delay: 0.25s; }
+.hero .hero-content > *:nth-child(3) { animation-delay: 0.4s; }
+.hero .hero-content > *:nth-child(4) { animation-delay: 0.55s; }
+.hero .hero-content > *:nth-child(5) { animation-delay: 0.7s; }
+
+.hero .hero-visual {
+  animation-delay: 1s;
+}
+
+/* Accessibility: respect reduced-motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  .hero .hero-content > *,
+  .hero .hero-visual {
+    opacity: 1;
+    animation: none;
+    filter: none;
+    transform: none;
+  }
+}
+
+
+/* ===== ANIMATION 6: PROJECT CARD GLOW ===== */
+.project-card {
+  position: relative;
+  border: 1px solid #303030;
+  transition:
+    border-color 0.35s ease,
+    transform 0.35s ease,
+    box-shadow 0.35s ease;
+}
+
+.project-card:hover {
+  transform: translateY(-6px);
+  border-color: #888;
+  box-shadow: 0 12px 35px rgba(255, 255, 255, 0.07);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .project-card {
+    transition: none;
+  }
+
+  .project-card:hover {
+    transform: none;
+  }
+}
+
+
+
