@@ -1460,7 +1460,7 @@ section[id] {
     .footer-copyright {
         order: 3;
         width: 100%;
-        text-align: left;
+        text-align: center;
     }
 }
 
