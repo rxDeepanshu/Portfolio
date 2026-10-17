@@ -432,56 +432,6 @@ window.addEventListener("load", () => {
     }
 });
 
-// Music
-
-
-const music = document.getElementById("backgroundMusic");
-const musicToggle = document.getElementById("musicToggle");
-const musicIcon = document.getElementById("musicIcon");
-const musicLabel = musicToggle?.querySelector(".music-label");
-
-if (music && musicToggle && musicIcon && musicLabel) {
-    music.volume = 0.25;
-
-    function updateMusicButton(isPlaying) {
-        musicIcon.textContent = isPlaying ? "🔊" : "🔇";
-        musicLabel.textContent = isPlaying ? "Music On" : "Music Off";
-        musicToggle.setAttribute(
-            "aria-label",
-            isPlaying ? "Mute background music" : "Turn background music on"
-        );
-        musicToggle.setAttribute("aria-pressed", String(isPlaying));
-        musicToggle.title = isPlaying
-            ? "Mute background music"
-            : "Turn background music on";
-    }
-
-    // Attempt autoplay; browsers may block it.
-    music.play()
-        .then(() => updateMusicButton(true))
-        .catch(() => updateMusicButton(false));
-
-    musicToggle.addEventListener("click", async () => {
-        if (!music.paused) {
-            music.pause();
-            updateMusicButton(false);
-            return;
-        }
-
-        try {
-            await music.play();
-            updateMusicButton(true);
-        } catch (error) {
-            updateMusicButton(false);
-            console.warn("Music playback could not start.", error);
-        }
-    });
-
-    music.addEventListener("play", () => updateMusicButton(true));
-    music.addEventListener("pause", () => updateMusicButton(false));
-}
-
-
 
 /* =========================================
    GITHUB PROFILE AND REPOSITORIES
