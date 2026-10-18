@@ -202,7 +202,7 @@ section[id] {
     inset: 0 auto auto 0;
     z-index: 1500;
     width: 0;
-    height: 3px;
+    height: 5px;
     background: var(--accent);
     pointer-events: none;
 }
@@ -273,7 +273,7 @@ section[id] {
     right: 0;
     bottom: 5px;
     left: 0;
-    height: 1px;
+    height: 3px;
     background: var(--accent);
     transform: scaleX(0);
     transform-origin: left;
@@ -414,14 +414,14 @@ section[id] {
     gap: 10px;
     margin-bottom: 27px;
     color: var(--text-secondary);
-    font-size: 10px;
+    font-size: 15px;
     font-weight: 700;
     letter-spacing: 1.8px;
 }
 
 .status-dot {
-    width: 7px;
-    height: 7px;
+    width: 10px;
+    height: 10px;
     flex-shrink: 0;
     background: var(--accent);
     border-radius: 50%;
@@ -564,13 +564,13 @@ section[id] {
 
 .hero-note-symbol {
     color: var(--accent);
-    font-size: 20px;
+    font-size: 30px;
     line-height: 1.2;
 }
 
 .hero-note p {
     color: var(--text-secondary);
-    font-size: 11px;
+    font-size: 14px;
     line-height: 1.7;
 }
 
@@ -589,7 +589,7 @@ section[id] {
 .hero-bottom-label {
     flex-shrink: 0;
     color: var(--text-muted);
-    font-size: 10px;
+    font-size: 16px;
     font-weight: 700;
     letter-spacing: 1.3px;
 }
@@ -603,7 +603,7 @@ section[id] {
 
 .interest-list span {
     color: var(--text-secondary);
-    font-size: 12px;
+    font-size: 15px;
 }
 
 
@@ -625,7 +625,7 @@ section[id] {
 .about-copy p {
     margin-bottom: 19px;
     color: var(--text-secondary);
-    font-size: 14px;
+    font-size:18px;
     line-height: 1.95;
 }
 
@@ -655,14 +655,14 @@ section[id] {
 .detail-label {
     padding-top: 2px;
     color: var(--text-muted);
-    font-size: 9px;
-    font-weight: 700;
+    font-size: 13px;
+    font-weight: 500;
     letter-spacing: 1px;
 }
 
 .detail-value {
     color: var(--text-primary);
-    font-size: 12px;
+    font-size: 15px;
     line-height: 1.8;
 }
 
@@ -1130,12 +1130,13 @@ section[id] {
     max-width: 490px;
     margin-top: 23px;
     color: var(--text-secondary);
-    font-size: 14px;
+    font-size: 16px;
     line-height: 1.95;
 }
 
 .contact-email {
     margin-top: 29px;
+    font-size: 15px;
 }
 
 .contact-details {
@@ -1154,14 +1155,14 @@ section[id] {
 
 .contact-item-label {
     color: var(--text-muted);
-    font-size: 13px;
-    font-weight: 700;
+    font-size: 15px;
+    font-weight: 500;
     letter-spacing: 1px;
 }
 
 .contact-item-value {
     color: var(--text-primary);
-    font-size: 14px;
+    font-size: 16px;
     overflow-wrap: anywhere;
     transition: color var(--transition-fast);
 }
@@ -2038,7 +2039,7 @@ select,
 .github-section {
     padding: 100px 0;
     background: #111111;
-    color: #eeeeee;
+    color: #f6f2f2;
 }
 
 .github-section .container {
@@ -2052,7 +2053,7 @@ select,
 
 .github-section .section-number {
     display: inline-block;
-    color: #8c9a7c;
+    color: #f0f1ef;
     font-size: 0.78rem;
     letter-spacing: 2px;
     margin-bottom: 14px;
@@ -2111,17 +2112,17 @@ select,
 }
 
 .github-username {
-    color: #8c9a7c;
+    color: #f3f4f2;
     text-decoration: none;
-    font-size: 0.92rem;
+    font-size: 1.10rem;
 }
 
 .github-username:hover {
-    color: #b5c7a1;
+    color: #c9cac8;
 }
 
 .github-profile-info p {
-    color: #a1a1aa;
+    color: #f7f7fa;
     margin: 10px 0 0;
     font-size: 0.9rem;
     line-height: 1.6;
@@ -2148,8 +2149,8 @@ select,
 }
 
 .github-stat p {
-    color: #999999;
-    font-size: 0.78rem;
+    color: #f7f4f4;
+    font-size: 1.10rem;
     margin: 6px 0 0;
 }
 
@@ -2163,7 +2164,8 @@ select,
     border: 1px solid #414141;
     border-radius: 9px;
     text-decoration: none;
-    font-size: 0.9rem;
+    font-size: 0.98rem;
+    font-weight: 500;
     transition: background 0.2s ease, border-color 0.2s ease;
 }
 
@@ -2195,7 +2197,7 @@ select,
 }
 
 .github-panel-heading p {
-    color: #999999;
+    color: #f9f6f6;
     font-size: 0.9rem;
     line-height: 1.6;
     margin: 0;
@@ -2207,7 +2209,7 @@ select,
     gap: 8px;
     color: #b5c7a1;
     font-size: 0.8rem;
-    border: 1px solid #344332;
+    border: 1px solid #4b4d4b;
     border-radius: 30px;
     padding: 7px 11px;
     white-space: nowrap;
@@ -2217,7 +2219,7 @@ select,
     width: 7px;
     height: 7px;
     border-radius: 50%;
-    background: #3fb950;
+    background: #32f84d;
 }
 
 .github-graph-wrapper {
@@ -2241,7 +2243,7 @@ select,
     align-items: center;
     justify-content: flex-end;
     gap: 5px;
-    color: #999999;
+    color: #f7f4f4;
     font-size: 0.75rem;
     margin-top: 15px;
 }
@@ -2325,7 +2327,7 @@ select,
 }
 
 .github-repository-icon {
-    color: #a8b79b;
+    color: #f7f9f5;
     font-size: 1.1rem;
 }
 
@@ -2333,16 +2335,17 @@ select,
     color: #eeeeee;
     font-weight: 600;
     text-decoration: none;
+    font-size: 20px;
     overflow-wrap: anywhere;
 }
 
 .github-repository-title a:hover {
-    color: #b5c7a1;
+    color: #afb1ae;
 }
 
 .github-repository-description {
-    color: #a1a1aa;
-    font-size: 0.9rem;
+    color: #f7f7f9;
+    font-size: 1.0rem;
     line-height: 1.7;
     margin: 0 0 20px;
     overflow-wrap: anywhere;
@@ -2354,8 +2357,8 @@ select,
     align-items: center;
     gap: 15px;
     flex-wrap: wrap;
-    color: #aaaaaa;
-    font-size: 0.8rem;
+    color: #f5f2f2;
+    font-size: 1.0rem;
     margin-top: auto;
 }
 
@@ -2379,7 +2382,7 @@ select,
     justify-content: center;
     gap: 12px;
     min-height: 110px;
-    color: #aaaaaa;
+    color: #f3efef;
 }
 
 .github-loading-spinner {
@@ -2494,8 +2497,8 @@ select,
 ======================================== */
 
 .leetcode-section {
-    padding: 100px 0;
-    background: #121212;
+    padding: 80px 0;
+    background: #1b1b1b;
     color: #ededed;
 }
 
@@ -2526,7 +2529,7 @@ select,
 }
 
 .leetcode-heading p {
-    color: #999;
+    color: #f4f0f0;
     line-height: 1.7;
 }
 
@@ -2557,10 +2560,11 @@ select,
     width: 52px;
     height: 52px;
     display: grid;
+    padding: 10px;
     place-items: center;
     border-radius: 14px;
-    background: #292a24;
-    border: 1px solid #444638;
+    background: #2e2e2e;
+    border: 1px solid #414141;
     color: #d4d5bd;
     font-weight: 800;
     letter-spacing: 1px;
@@ -2573,23 +2577,24 @@ select,
 
 .leetcode-identity p {
     margin: 0;
-    color: #999;
-    font-size: 0.9rem;
+    color: #f9f5f5;
+    font-size: 1.0rem;
 }
 
 .leetcode-profile-link {
-    color: #d5d6c3;
+    color: #ffffff;
     text-decoration: none;
-    border: 1px solid #444638;
+    border: 1px solid #484848;
     padding: 11px 16px;
+    font-weight: 500;
     border-radius: 9px;
-    font-size: 0.85rem;
+    font-size: 1.0rem;
     transition: background 0.25s, border-color 0.25s;
 }
 
 .leetcode-profile-link:hover {
-    background: #292a24;
-    border-color: #a3a58c;
+    background: #2a2a29;
+    border-color: #a5a5a3;
 }
 
 /* Total solved */
@@ -2613,8 +2618,8 @@ select,
 }
 
 .stat-caption {
-    color: #999;
-    font-size: 0.9rem;
+    color: #fdfcfc;
+    font-size: 1.25rem;
 }
 
 /* Difficulty cards */
@@ -2633,7 +2638,7 @@ select,
 }
 
 .difficulty-title {
-    font-size: 0.85rem;
+    font-size: 1.30rem;
     font-weight: 600;
 }
 
@@ -2643,15 +2648,15 @@ select,
 }
 
 .easy-card .difficulty-title {
-    color: #57c785;
+    color: #f2f7f3;
 }
 
 .medium-card .difficulty-title {
-    color: #e5b85c;
+    color: #f5f6f1;
 }
 
 .hard-card .difficulty-title {
-    color: #ed7777;
+    color: #faf7f7;
 }
 
 .difficulty-track {
@@ -2670,22 +2675,22 @@ select,
 }
 
 .easy-card .difficulty-fill {
-    background: #57c785;
+    background: #eceeed;
 }
 
 .medium-card .difficulty-fill {
-    background: #e5b85c;
+    background: #f8f8f7;
 }
 
 .hard-card .difficulty-fill {
-    background: #ed7777;
+    background: #f7f5f5;
 }
 
 .difficulty-card small {
     display: block;
     margin-top: 12px;
-    color: #969696;
-    font-size: 0.75rem;
+    color: #f8f5f5;
+    font-size: 1.15rem;
 }
 
 /* Extra statistics */
@@ -2705,8 +2710,8 @@ select,
 }
 
 .extra-label {
-    color: #999;
-    font-size: 0.8rem;
+    color: #f8f5f5;
+    font-size: 1.2rem;
 }
 
 .leetcode-extra-card h3 {
@@ -2719,7 +2724,7 @@ select,
 
 .leetcode-status {
     margin: 24px 0 18px;
-    color: #999;
+    color: #faf5f5;
     font-size: 0.8rem;
     line-height: 1.6;
 }
@@ -2877,6 +2882,4 @@ select,
     transform: none;
   }
 }
-
-
 
