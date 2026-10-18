@@ -2883,3 +2883,1033 @@ select,
   }
 }
 
+
+
+
+/* =========================================================
+   EXTREME PORTFOLIO ANIMATIONS — APPEND TO style.css
+   ========================================================= */
+
+:root {
+    --animation-glow: rgba(255, 255, 255, 0.14);
+    --animation-speed: 0.35s;
+}
+
+/* GLOBAL SMOOTHNESS */
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 90px;
+}
+
+body {
+    overflow-x: clip;
+}
+
+a,
+button,
+.project-card,
+.skill-group,
+.education-entry,
+.leetcode-card,
+.github-card,
+.experience-entry,
+.profile-frame,
+.button {
+    -webkit-tap-highlight-color: transparent;
+    transition:
+        color var(--animation-speed) ease,
+        background-color var(--animation-speed) ease,
+        border-color var(--animation-speed) ease,
+        box-shadow var(--animation-speed) ease,
+        transform var(--animation-speed) cubic-bezier(.2, .8, .2, 1);
+}
+
+/* ANIMATED BACKGROUND GLOW */
+body::before {
+    content: "";
+    position: fixed;
+    inset: -50%;
+    z-index: -1;
+    pointer-events: none;
+    background:
+        radial-gradient(circle at 25% 25%, rgba(255,255,255,.035), transparent 30%),
+        radial-gradient(circle at 75% 65%, rgba(160,160,160,.045), transparent 32%);
+    animation: ambientDrift 18s ease-in-out infinite alternate;
+}
+
+@keyframes ambientDrift {
+    0% {
+        transform: translate3d(-2%, -1%, 0) rotate(0deg) scale(1);
+    }
+    50% {
+        transform: translate3d(2%, 2%, 0) rotate(4deg) scale(1.04);
+    }
+    100% {
+        transform: translate3d(-1%, 3%, 0) rotate(-3deg) scale(1.08);
+    }
+}
+
+/* NAVIGATION ENTRANCE */
+.site-header {
+    animation: navDropIn .9s cubic-bezier(.16, 1, .3, 1) both;
+}
+
+@keyframes navDropIn {
+    from {
+        opacity: 0;
+        transform: translateY(-35px);
+        filter: blur(8px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+        filter: blur(0);
+    }
+}
+
+/* NAVIGATION UNDERLINE */
+.nav-link {
+    position: relative;
+    isolation: isolate;
+    transition: color .3s ease, transform .3s ease;
+}
+
+.nav-link::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -7px;
+    height: 2px;
+    background: currentColor;
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform .35s cubic-bezier(.2, .8, .2, 1);
+}
+
+.nav-link:hover::after,
+.nav-link.active::after {
+    transform: scaleX(1);
+    transform-origin: left;
+}
+
+.nav-link:hover {
+    transform: translateY(-2px);
+}
+
+/* BUTTON SHIMMER */
+.button {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+}
+
+.button::before {
+    content: "";
+    position: absolute;
+    inset: -100%;
+    z-index: -1;
+    background: linear-gradient(
+        110deg,
+        transparent 40%,
+        rgba(255,255,255,.24) 50%,
+        transparent 60%
+    );
+    transform: translateX(-100%) rotate(10deg);
+    transition: transform .7s ease;
+}
+
+.button:hover::before {
+    transform: translateX(100%) rotate(10deg);
+}
+
+.button:hover {
+    transform: translateY(-4px) scale(1.025);
+    box-shadow: 0 12px 35px rgba(255,255,255,.10);
+}
+
+.button:active {
+    transform: translateY(0) scale(.97);
+}
+
+/* HERO ENTRANCE */
+.hero .eyebrow,
+.hero .hero-greeting,
+.hero h1,
+.hero .hero-role,
+.hero .hero-description,
+.hero .hero-actions,
+.hero .hero-visual,
+.hero .hero-bottom {
+    animation: heroRise 1s cubic-bezier(.16, 1, .3, 1) both;
+}
+
+.hero .eyebrow { animation-delay: .1s; }
+.hero .hero-greeting { animation-delay: .2s; }
+.hero h1 { animation-delay: .3s; }
+.hero .hero-role { animation-delay: .4s; }
+.hero .hero-description { animation-delay: .5s; }
+.hero .hero-actions { animation-delay: .6s; }
+.hero .hero-visual { animation-delay: .45s; }
+.hero .hero-bottom { animation-delay: .8s; }
+
+@keyframes heroRise {
+    from {
+        opacity: 0;
+        transform: translateY(35px);
+        filter: blur(7px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+        filter: blur(0);
+    }
+}
+
+/* NAME HIGHLIGHT */
+.hero-name-accent {
+    display: inline-block;
+    animation: nameGlow 4s ease-in-out infinite;
+}
+
+@keyframes nameGlow {
+    0%, 100% {
+        text-shadow: 0 0 0 transparent;
+    }
+    50% {
+        text-shadow: 0 0 22px rgba(255,255,255,.22);
+    }
+}
+
+/* PROFILE IMAGE FLOAT */
+.profile-frame {
+    transform-style: preserve-3d;
+    animation: profileFloat 6s ease-in-out infinite;
+}
+
+.profile-image {
+    transition: filter .5s ease, transform .6s cubic-bezier(.2,.8,.2,1);
+}
+
+.profile-frame:hover .profile-image {
+    filter: contrast(1.08) brightness(1.08);
+    transform: scale(1.035);
+}
+
+@keyframes profileFloat {
+    0%, 100% {
+        transform: translateY(0) rotate(0deg);
+    }
+    50% {
+        transform: translateY(-10px) rotate(.5deg);
+    }
+}
+
+/* STATUS DOT PULSE */
+.status-dot {
+    animation: statusPulse 1.8s ease-out infinite;
+}
+
+@keyframes statusPulse {
+    0% {
+        box-shadow: 0 0 0 0 rgba(255,255,255,.45);
+    }
+    70% {
+        box-shadow: 0 0 0 9px rgba(255,255,255,0);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(255,255,255,0);
+    }
+}
+
+/* SECTION HEADINGS */
+.section-heading h2,
+.contact-intro h2 {
+    transition: transform .5s ease, letter-spacing .5s ease;
+}
+
+.section-heading:hover h2,
+.contact-intro:hover h2 {
+    transform: translateX(5px);
+    letter-spacing: .3px;
+}
+
+.section-index {
+    transition: opacity .3s ease, transform .3s ease;
+}
+
+.section-heading:hover .section-index {
+    opacity: .7;
+    transform: translateX(5px);
+}
+
+/* PROJECT CARDS */
+.project-card {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+    transform: translateZ(0);
+}
+
+.project-card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+    background: linear-gradient(
+        135deg,
+        rgba(255,255,255,.09),
+        transparent 42%,
+        rgba(255,255,255,.025)
+    );
+    opacity: 0;
+    transition: opacity .45s ease;
+}
+
+.project-card::after {
+    content: "";
+    position: absolute;
+    top: -120%;
+    left: -70%;
+    width: 45%;
+    height: 350%;
+    pointer-events: none;
+    background: rgba(255,255,255,.07);
+    transform: rotate(25deg);
+    transition: left .8s ease;
+}
+
+.project-card:hover {
+    transform: translateY(-10px) scale(1.015);
+    border-color: rgba(255,255,255,.35);
+    box-shadow:
+        0 20px 50px rgba(0,0,0,.25),
+        0 0 25px rgba(255,255,255,.045);
+}
+
+.project-card:hover::before {
+    opacity: 1;
+}
+
+.project-card:hover::after {
+    left: 150%;
+}
+
+/* SKILL CARDS */
+.skill-group {
+    position: relative;
+    overflow: hidden;
+}
+
+.skill-group::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    border: 1px solid transparent;
+    border-radius: inherit;
+    background: linear-gradient(135deg, rgba(255,255,255,.25), transparent 55%)
+        border-box;
+    -webkit-mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    opacity: 0;
+    transition: opacity .4s ease;
+}
+
+.skill-group:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 15px 35px rgba(255,255,255,.06);
+}
+
+.skill-group:hover::before {
+    opacity: 1;
+}
+
+/* ICON ANIMATIONS */
+.button i,
+a i,
+button i {
+    transition: transform .35s cubic-bezier(.2,.8,.2,1);
+}
+
+.button:hover i,
+a:hover i,
+button:hover i {
+    transform: translateY(-2px) rotate(-5deg);
+}
+
+/* SOCIAL LINKS */
+.hero-socials a,
+.footer-socials a {
+    transition: transform .35s ease, opacity .35s ease;
+}
+
+.hero-socials a:hover,
+.footer-socials a:hover {
+    transform: translateY(-5px) scale(1.12);
+}
+
+/* ABOUT / EXPERIENCE / EDUCATION */
+.about-grid > *,
+.experience-entry,
+.education-entry {
+    transition:
+        transform .4s cubic-bezier(.2,.8,.2,1),
+        border-color .4s ease,
+        box-shadow .4s ease;
+}
+
+.experience-entry:hover,
+.education-entry:hover {
+    transform: translateX(6px);
+    border-color: rgba(255,255,255,.3);
+    box-shadow: -5px 0 0 rgba(255,255,255,.12);
+}
+
+/* GITHUB AND LEETCODE CARDS */
+.github-repository,
+.github-repo-card,
+.leetcode-card,
+.difficulty-card,
+.leetcode-extra-card {
+    transition:
+        transform .35s ease,
+        border-color .35s ease,
+        box-shadow .35s ease;
+}
+
+.github-repository:hover,
+.github-repo-card:hover,
+.leetcode-card:hover,
+.difficulty-card:hover,
+.leetcode-extra-card:hover {
+    transform: translateY(-5px);
+    border-color: rgba(255,255,255,.3);
+    box-shadow: 0 14px 30px rgba(255,255,255,.05);
+}
+
+/* PROGRESS BARS */
+.difficulty-fill,
+.progress-fill,
+.skill-progress,
+.skill-bar-fill {
+    transform-origin: left;
+    animation: progressReveal 1.5s cubic-bezier(.16,1,.3,1) both;
+}
+
+@keyframes progressReveal {
+    from {
+        transform: scaleX(0);
+    }
+    to {
+        transform: scaleX(1);
+    }
+}
+
+/* SCROLL PROGRESS BAR */
+.scroll-progress,
+#scrollProgressBar {
+    transform-origin: left center;
+    box-shadow: 0 0 12px rgba(255,255,255,.25);
+}
+
+/* BACK TO TOP */
+.back-to-top {
+    transition: transform .35s ease, box-shadow .35s ease, opacity .35s ease;
+}
+
+.back-to-top:hover {
+    transform: translateY(-6px) rotate(-8deg);
+    box-shadow: 0 0 25px rgba(255,255,255,.15);
+}
+
+/* CONTACT FORM INPUTS */
+input,
+textarea,
+select {
+    transition:
+        border-color .3s ease,
+        box-shadow .3s ease,
+        background-color .3s ease;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+    outline: none;
+    border-color: rgba(255,255,255,.55);
+    box-shadow: 0 0 0 4px rgba(255,255,255,.06);
+}
+
+/* CUSTOM CURSOR — DESKTOP ONLY */
+@media (pointer: fine) {
+    .custom-cursor {
+        transition:
+            width .25s ease,
+            height .25s ease,
+            background-color .25s ease,
+            opacity .25s ease;
+    }
+
+    a:hover ~ .custom-cursor,
+    button:hover ~ .custom-cursor {
+        width: 16px;
+        height: 16px;
+    }
+}
+
+/* PRELOADER FINISH */
+.page-loader,
+.preloader,
+.loader-screen {
+    transition: opacity .6s ease, visibility .6s ease;
+}
+
+.loader-spinner {
+    animation: loaderSpin .8s linear infinite;
+}
+
+@keyframes loaderSpin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* SELECTION */
+::selection {
+    color: #121212;
+    background: #f4f4f4;
+}
+
+/* ACCESSIBLE KEYBOARD FOCUS */
+:focus-visible {
+    outline: 2px solid rgba(255,255,255,.8);
+    outline-offset: 5px;
+    border-radius: 4px;
+}
+
+/* MOBILE PERFORMANCE */
+@media (max-width: 768px) {
+    body::before {
+        animation-duration: 28s;
+    }
+
+    .profile-frame {
+        animation-duration: 8s;
+    }
+
+    .project-card:hover,
+    .skill-group:hover,
+    .experience-entry:hover,
+    .education-entry:hover {
+        transform: translateY(-3px);
+    }
+
+    .project-card::after {
+        display: none;
+    }
+}
+
+/* REDUCED MOTION ACCESSIBILITY */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        scroll-behavior: auto !important;
+        animation-duration: .01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: .01ms !important;
+    }
+
+    body::before,
+    .profile-frame,
+    .hero-name-accent,
+    .status-dot {
+        animation: none !important;
+    }
+
+    .hero .eyebrow,
+    .hero .hero-greeting,
+    .hero h1,
+    .hero .hero-role,
+    .hero .hero-description,
+    .hero .hero-actions,
+    .hero .hero-visual,
+    .hero .hero-bottom {
+        opacity: 1;
+        filter: none;
+        transform: none;
+    }
+}
+
+
+
+
+/* =========================================================
+   PREMIUM PORTFOLIO ANIMATION SYSTEM
+   Paste at the END of style.css
+========================================================= */
+
+:root {
+  --motion-ease: cubic-bezier(0.22, 1, 0.36, 1);
+  --motion-fast: 250ms;
+  --motion-normal: 600ms;
+  --motion-slow: 900ms;
+  --glow-color: rgba(100, 160, 255, 0.25);
+}
+
+/* ---------- 1. SMOOTH PAGE EXPERIENCE ---------- */
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 100px;
+}
+
+body {
+  overflow-x: clip;
+}
+
+::selection {
+  color: #ffffff;
+  background: #6366f1;
+}
+
+/* ---------- 2. CINEMATIC PAGE ENTRANCE ---------- */
+
+@keyframes pageEntrance {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.hero-content,
+.hero-visual {
+  animation: pageEntrance 1s var(--motion-ease) both;
+}
+
+.hero-visual {
+  animation-delay: 150ms;
+}
+
+/* ---------- 3. SCROLL REVEAL WITH YOUR EXISTING JS ---------- */
+
+/* Elements marked with data-reveal animate when JS adds .is-visible */
+[data-reveal] {
+  opacity: 0;
+  transform: translateY(45px) scale(0.98);
+  filter: blur(5px);
+
+  transition:
+    opacity 800ms var(--motion-ease),
+    transform 800ms var(--motion-ease),
+    filter 800ms var(--motion-ease);
+
+  will-change: opacity, transform;
+}
+
+[data-reveal].is-visible {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  filter: blur(0);
+}
+
+/* ---------- 4. AUTOMATIC SCROLL REVEALS IN MODERN BROWSERS ---------- */
+
+/*
+   Uses native CSS scroll-driven animations.
+   Unsupported browsers simply skip this effect.
+*/
+
+@supports (animation-timeline: view()) {
+  main section:not(#home) .section-heading,
+  main section:not(#home) .about-grid,
+  main section:not(#home) .skill-group,
+  main section:not(#home) .project-card,
+  main section:not(#home) .experience-entry,
+  main section:not(#home) .education-entry,
+  main section:not(#home) .contact-layout > *,
+  main section:not(#home) .github-repository,
+  main section:not(#home) .leetcode-card,
+  main section:not(#home) .detail-row {
+    animation: scrollReveal linear both;
+    animation-timeline: view();
+    animation-range: entry 0% entry 35%;
+  }
+
+  @keyframes scrollReveal {
+    from {
+      opacity: 0;
+      transform: translateY(55px) scale(0.97);
+      filter: blur(4px);
+    }
+
+    to {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+      filter: blur(0);
+    }
+  }
+}
+
+/* ---------- 5. STAGGERED CARD ANIMATIONS ---------- */
+
+.projects-grid .project-card:nth-child(3n + 1) {
+  transition-delay: 0ms;
+}
+
+.projects-grid .project-card:nth-child(3n + 2) {
+  transition-delay: 100ms;
+}
+
+.projects-grid .project-card:nth-child(3n + 3) {
+  transition-delay: 200ms;
+}
+
+.skills-grid .skill-group:nth-child(3n + 1) {
+  transition-delay: 0ms;
+}
+
+.skills-grid .skill-group:nth-child(3n + 2) {
+  transition-delay: 100ms;
+}
+
+.skills-grid .skill-group:nth-child(3n + 3) {
+  transition-delay: 200ms;
+}
+
+/* ---------- 6. PREMIUM CARD HOVER EFFECT ---------- */
+
+.project-card,
+.skill-group,
+.experience-entry,
+.education-entry,
+.github-repository,
+.leetcode-card,
+.about-details,
+.detail-row {
+  position: relative;
+  isolation: isolate;
+
+  transition:
+    transform 350ms var(--motion-ease),
+    border-color 350ms ease,
+    box-shadow 350ms ease,
+    background-color 350ms ease;
+}
+
+.project-card::before,
+.skill-group::before,
+.experience-entry::before,
+.education-entry::before,
+.github-repository::before,
+.leetcode-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+
+  border-radius: inherit;
+  opacity: 0;
+
+  background: linear-gradient(
+    135deg,
+    rgba(99, 102, 241, 0.12),
+    transparent 45%,
+    rgba(56, 189, 248, 0.09)
+  );
+
+  transition: opacity 350ms ease;
+}
+
+.project-card:hover,
+.skill-group:hover,
+.experience-entry:hover,
+.education-entry:hover,
+.github-repository:hover,
+.leetcode-card:hover {
+  transform: translateY(-8px);
+  border-color: rgba(129, 140, 248, 0.65);
+  box-shadow:
+    0 18px 45px rgba(0, 0, 0, 0.12),
+    0 0 28px var(--glow-color);
+}
+
+.project-card:hover::before,
+.skill-group:hover::before,
+.experience-entry:hover::before,
+.education-entry:hover::before,
+.github-repository:hover::before,
+.leetcode-card:hover::before {
+  opacity: 1;
+}
+
+/* ---------- 7. ANIMATED GRADIENT HEADINGS ---------- */
+
+.section-heading h2 span,
+.contact-intro h2 span {
+  background: linear-gradient(
+    110deg,
+    #818cf8,
+    #38bdf8,
+    #c084fc,
+    #818cf8
+  );
+
+  background-size: 300% 100%;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+
+  animation: gradientFlow 7s ease infinite;
+}
+
+@keyframes gradientFlow {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* ---------- 8. HERO NAME GLOW ---------- */
+
+.hero-content h1 {
+  animation: nameEntrance 1s var(--motion-ease) both;
+}
+
+@keyframes nameEntrance {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+    letter-spacing: 0.08em;
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+    letter-spacing: normal;
+  }
+}
+
+/* ---------- 9. FLOATING PROFILE VISUAL ---------- */
+
+.profile-frame {
+  animation: profileFloat 6s ease-in-out infinite;
+  transform-origin: center;
+}
+
+@keyframes profileFloat {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.profile-image {
+  transition:
+    transform 600ms var(--motion-ease),
+    filter 600ms ease;
+}
+
+.profile-frame:hover .profile-image {
+  transform: scale(1.035);
+  filter: saturate(1.12);
+}
+
+/* ---------- 10. ANIMATED STATUS INDICATOR ---------- */
+
+.status-dot {
+  animation: statusPulse 2s ease-out infinite;
+}
+
+@keyframes statusPulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(74, 222, 128, 0.6);
+  }
+
+  70% {
+    box-shadow: 0 0 0 9px rgba(74, 222, 128, 0);
+  }
+
+  100% {
+    box-shadow: 0 0 0 0 rgba(74, 222, 128, 0);
+  }
+}
+
+/* ---------- 11. BUTTON SHINE & LIFT ---------- */
+
+.button,
+button {
+  transition:
+    transform 250ms var(--motion-ease),
+    box-shadow 250ms ease,
+    filter 250ms ease;
+}
+
+.button {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.button::after {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -100%;
+  width: 55%;
+  height: 200%;
+
+  transform: rotate(22deg);
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.25),
+    transparent
+  );
+
+  transition: left 650ms var(--motion-ease);
+  pointer-events: none;
+}
+
+.button:hover::after {
+  left: 150%;
+}
+
+.button:hover,
+button:hover {
+  transform: translateY(-3px);
+  filter: brightness(1.06);
+}
+
+.button:active,
+button:active {
+  transform: translateY(0) scale(0.98);
+}
+
+/* ---------- 12. NAVIGATION UNDERLINE ANIMATION ---------- */
+
+.nav-link {
+  position: relative;
+}
+
+.nav-link::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: -5px;
+
+  width: 100%;
+  height: 2px;
+
+  transform: translateX(-50%) scaleX(0);
+  transform-origin: center;
+
+  background: linear-gradient(90deg, #818cf8, #38bdf8);
+  transition: transform 350ms var(--motion-ease);
+}
+
+.nav-link:hover::after,
+.nav-link.active::after {
+  transform: translateX(-50%) scaleX(1);
+}
+
+/* ---------- 13. IMAGE AND ICON INTERACTIONS ---------- */
+
+.project-icon,
+.social-links a,
+.skill-list li,
+.project-tech li {
+  transition:
+    transform 300ms var(--motion-ease),
+    color 300ms ease,
+    border-color 300ms ease,
+    box-shadow 300ms ease;
+}
+
+.project-card:hover .project-icon {
+  transform: translateY(-4px) rotate(-5deg);
+}
+
+.skill-list li:hover,
+.project-tech li:hover {
+  transform: translateY(-3px);
+}
+
+/* ---------- 14. SCROLL PROGRESS BAR ---------- */
+
+#scrollProgressBar,
+.scroll-progress {
+  transform-origin: left center;
+  will-change: width;
+}
+
+/* ---------- 15. CLEAN KEYBOARD FOCUS ---------- */
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+  outline: 2px solid #818cf8;
+  outline-offset: 4px;
+}
+
+/* ---------- 16. MOBILE PERFORMANCE ---------- */
+
+@media (max-width: 768px) {
+  .profile-frame {
+    animation-duration: 8s;
+  }
+
+  .project-card:hover,
+  .skill-group:hover,
+  .experience-entry:hover,
+  .education-entry:hover,
+  .github-repository:hover,
+  .leetcode-card:hover {
+    transform: translateY(-3px);
+  }
+
+  [data-reveal] {
+    filter: none;
+  }
+}
+
+/* ---------- 17. ACCESSIBILITY: REDUCED MOTION ---------- */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    filter: none !important;
+  }
+
+  [data-reveal] {
+    opacity: 1;
+    transform: none;
+  }
+}
