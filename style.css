@@ -3656,13 +3656,15 @@ body {
 
 .section-heading h2 span,
 .contact-intro h2 span {
-  background: linear-gradient(
+  /* background: linear-gradient(
     110deg,
     #818cf8,
     #38bdf8,
     #c084fc,
     #818cf8
-  );
+  ); */
+
+  background-color:#88f503 ;
 
   background-size: 300% 100%;
   background-clip: text;
@@ -3824,7 +3826,7 @@ button:active {
   transform: translateX(-50%) scaleX(0);
   transform-origin: center;
 
-  background: linear-gradient(90deg, #818cf8, #38bdf8);
+  background: linear-gradient(90deg, #88f503, #7ff402);
   transition: transform 350ms var(--motion-ease);
 }
 
