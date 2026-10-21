@@ -1189,7 +1189,7 @@ section[id] {
 
 .site-footer {
     padding-block: 28px;
-    background: var(--bg-secondary);
+    background:rgb(9, 9, 9);
     border-top: 1px solid var(--border);
 }
 
@@ -1209,8 +1209,8 @@ section[id] {
 }
 
 .footer-copyright {
-    color: var(--text-muted);
-    font-size: 14px;
+    color:white;
+    font-size: 17px;
     text-align: center;
 }
 
