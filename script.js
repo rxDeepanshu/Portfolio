@@ -801,3 +801,13 @@ const revealObserver = new IntersectionObserver((entries) => {
 document.querySelectorAll("[data-reveal]").forEach((element) => {
   revealObserver.observe(element);
 });
+
+
+document.querySelectorAll(".achievement-link").forEach((link) => {
+  link.addEventListener("click", (event) => {
+    if (link.getAttribute("href") === "#") {
+      event.preventDefault();
+      console.info("Add your certificate URL to this achievement link.");
+    }
+  });
+});

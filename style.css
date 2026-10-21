@@ -3916,3 +3916,126 @@ select:focus-visible {
     transform: none;
   }
 }
+
+
+
+.achievements-section {
+  background: #141414;
+  color: #e8e8e8;
+  padding: 80px 8.25%;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.achievements-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.section-label {
+  display: block;
+  color: #f0f0f0;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  margin-bottom: 22px;
+}
+
+.achievements-section h2 {
+  font-size: clamp(32px, 4vw, 40px);
+  line-height: 1.2;
+  font-weight: 700;
+  letter-spacing: -1.5px;
+  margin: 0 0 18px;
+}
+
+.achievements-section h2 span {
+  color: #80ff00;
+}
+
+.section-description {
+  color: #c5c5c5;
+  font-size: 14px;
+  line-height: 1.7;
+  margin-bottom: 46px;
+}
+
+.achievements-list {
+  border-top: 1px solid #303030;
+}
+
+.achievement-item {
+  display: grid;
+  grid-template-columns: 20px 1fr;
+  gap: 15px;
+  padding: 32px 0;
+  border-bottom: 1px solid #303030;
+  transition: padding-left 0.3s ease;
+}
+
+.achievement-item:hover {
+  padding-left: 8px;
+}
+
+.achievement-marker {
+  color: #e8e8e8;
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+.achievement-date {
+  display: block;
+  color: #c5c5c5;
+  font-size: 13px;
+  margin-bottom: 18px;
+}
+
+.achievement-content h3 {
+  color: #e8e8e8;
+  font-size: 17px;
+  font-weight: 700;
+  margin: 0 0 12px;
+}
+
+.achievement-issuer {
+  color: #d0d0d0;
+  font-size: 14px;
+  margin-bottom: 20px;
+}
+
+.achievement-description {
+  color: #c5c5c5;
+  font-size: 13px;
+  line-height: 1.8;
+  margin-bottom: 16px;
+}
+
+.achievement-link {
+  display: inline-block;
+  color: #e8e8e8;
+  font-size: 13px;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.achievement-link:hover {
+  color: #80ff00;
+}
+
+@media (max-width: 600px) {
+  .achievements-section {
+    padding: 60px 6%;
+  }
+
+  .achievements-section h2 {
+    font-size: 32px;
+  }
+
+  .section-description {
+    margin-bottom: 32px;
+  }
+
+  .achievement-item {
+    gap: 10px;
+    padding: 26px 0;
+  }
+}
