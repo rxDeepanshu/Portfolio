@@ -1694,7 +1694,7 @@ section[id] {
     }
 
     .footer-logo {
-        font-size: 13px;
+        font-size: 18px;
     }
 
     .footer-right {
@@ -1713,7 +1713,8 @@ section[id] {
 
     .footer-copyright {
         grid-column: 1 / -1;
-        font-size: 10px;
+        font-size: 11px;
+
         line-height: 1.8;
     }
 }
